@@ -1,0 +1,60 @@
+* Anthropic Tool Use (Function Calling)
+
+Anthropic's Claude AI model supports tool use, allowing you to equip Claude with custom tools to perform a wider variety of tasks. Tool use is available through the Anthropic Messages API, Amazon Bedrock, and Google Vertex AI.
+
+** How Tool Use Works
+
+1. Provide Claude with tools and a user prompt (API request)
+   - Define the tools Claude should have access to, including their names, descriptions, and input schemas
+   - Provide a user prompt that may require the use of one or more tools to answer
+2. Claude uses a tool (API response)
+   - Claude assesses the user prompt and decides which tool(s) to use and with what inputs
+   - Claude constructs a properly formatted tool use request
+   - The API response will have a =stop_reason= of =tool_use=
+3. Extract tool input, run code, and return results (API request)
+   - Extract the tool name and input from Claude's tool use request
+   - Run the actual tool code on the client side
+   - Return the results to Claude by continuing the conversation with a =tool_result= content block
+4. Claude uses tool result to formulate a response (API response)
+   - After receiving the tool results, Claude will use that information to formulate its final response
+
+** Specifying Tools
+
+Tools are specified in the =tools= parameter of the API request. Each tool definition includes:
+
+- =name=: The name of the tool (must match regex =^[a-zA-Z0-9_-]{1,64}$=)
+- =description=: A detailed plaintext description of what the tool does, when it should be used, and how it behaves
+- =input_schema=: A JSON Schema object defining the expected parameters for the tool
+
+** Best Practices for Tool Definitions
+
+- Provide extremely detailed descriptions explaining every detail about the tool
+- Prioritize descriptions over examples
+- Aim for at least 3-4 sentences per tool description, more if the tool is complex
+
+** Tool Use and Tool Result Content Blocks
+
+- When Claude uses a tool, it returns a response with =stop_reason= of =tool_use= and =tool_use= content blocks
+- =tool_use= blocks include an =id=, =name=, and =input= for the tool being used
+- After running the tool, continue the conversation with a =tool_result= content block containing:
+  - =tool_use_id=: The ID of the tool use request this is a result for
+  - =content=: The result of the tool as a string or list of content blocks (text or image)
+  - =is_error= (optional): Set to =true= if the tool execution resulted in an error
+
+** Best Practices and Limitations
+
+- Use Claude 3 Opus for navigating complex tool use, Haiku for straightforward tools
+- Claude can handle hundreds of simple tools or a smaller number of complex tools
+- Prefer simpler interfaces and flatter input schemas
+- Claude generally prefers sequential tool use rather than parallel
+- Pay attention to Claude's chain of thought output for debugging
+- Add "Do not reflect on the quality of the returned search results in your response." to prompts to prevent search quality reflection
+
+** Next Steps
+
+- Browse the tool use cookbooks for code examples
+- Iterate and improve tool descriptions and prompts
+- Experiment with different tools and schemas
+- Chain multiple tools together for complex tasks
+- Build agentic orchestrations
+- Explore complex architectures like RAG search or model subagents
