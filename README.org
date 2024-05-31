@@ -2,6 +2,12 @@
 
 Anthropic's Claude AI model supports tool use, allowing you to equip Claude with custom tools to perform a wider variety of tasks. Tool use is available through the Anthropic Messages API, Amazon Bedrock, and Google Vertex AI.
 
+- https://docs.anthropic.com/en/docs/tool-use
+- https://github.com/anthropics/courses/tree/master/ToolUse
+- https://github.com/anthropics/anthropic-cookbook/tree/main/tool_use
+- https://www.anthropic.com/news/tool-use-ga
+- https://www.wired.com/story/chatbots-are-entering-the-stone-age/
+
 ** How Tool Use Works
 
 1. Provide Claude with tools and a user prompt (API request)
