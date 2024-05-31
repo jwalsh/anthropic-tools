@@ -58,3 +58,75 @@ Tools are specified in the =tools= parameter of the API request. Each tool defin
 - Chain multiple tools together for complex tasks
 - Build agentic orchestrations
 - Explore complex architectures like RAG search or model subagents
+
+** Example
+#+begin_src clojure
+(ns example.spec
+  (:require [clojure.spec.alpha :as s]))
+
+(s/def ::id string?)
+(s/def ::type #{"message"})
+(s/def ::role #{"assistant"})
+(s/def ::model string?)
+
+(s/def ::text string?)
+(s/def ::text-content (s/keys :req-un [::type ::text]))
+
+(s/def ::tool-use-id string?)
+(s/def ::tool-use-name string?)
+(s/def ::tool-use-input (s/map-of keyword? any?))
+(s/def ::tool-use-content (s/keys :req-un [::type ::id ::name ::input]))
+
+(s/def ::content (s/cat :text-content (s/? ::text-content)
+                        :tool-use-contents (s/* ::tool-use-content)))
+
+(s/def ::stop-reason #{"tool_use"})
+(s/def ::stop-sequence (s/nilable any?))
+
+(s/def ::input-tokens nat-int?)
+(s/def ::output-tokens nat-int?)
+(s/def ::usage (s/keys :req-un [::input-tokens ::output-tokens]))
+
+(s/def ::message
+  (s/keys :req-un [::id ::type ::role ::model ::content ::stop-reason ::usage]
+          :opt-un [::stop-sequence]))
+
+#+end_src
+
+
+#+begin_src json
+{
+  "id": "msg_01BshHWJTp4yAimfAUukHKPP",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-3-opus-20240229",
+  "content": [
+    {
+      "type": "text",
+      "text": "<thinking>\nTo answer this query, we need information from two tools:\n1. get_weather - to get the current weather in Boston\n   Required parameters:\n   - location: Boston, MA (can be inferred from the question) \n   - unit: not specified, so we can use the default \n2. get_time - to get the current time in Boston's timezone\n   Required parameters:  \n   - timezone: Not directly provided, but we can infer it is \"America/New_York\" based on Boston's location\n\nSince we have the required parameters for both tools, we can proceed with the calls in the order they were requested.\n</thinking>"
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01DTUmfdtpkK1Xh3Lt6ti6nh",
+      "name": "get_weather",
+      "input": {
+        "location": "Boston, MA"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01FUVnApvWS2CjQ1GL3KrAuV",
+      "name": "get_time",
+      "input": {
+        "timezone": "America/New_York"
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 745,
+    "output_tokens": 239
+  }
+}
+#+end_src
