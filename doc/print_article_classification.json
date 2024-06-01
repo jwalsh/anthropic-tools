@@ -1,0 +1,36 @@
+    {
+        "name": "print_article_classification",
+        "description": "Prints the classification results.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "subject": {
+                    "type": "string",
+                    "description": "The overall subject of the article",
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "A paragaph summary of the article"
+                },
+                "keywords": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "description": "List of keywords and topics in the article"
+                    }
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {"type": "string", "description": "The category name."},
+                            "score": {"type": "number", "description": "The classification score for the category, ranging from 0.0 to 1.0."}
+                        },
+                        "required": ["name", "score"]
+                    }
+                }
+            },
+            "required": ["subject","summary", "keywords", "categories"]
+        }
+    }
