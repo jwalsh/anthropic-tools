@@ -1,0 +1,14 @@
+{
+    "name": "web_search",
+    "description": "A tool to retrieve up to date information on a given topic by searching the web",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "topic": {
+                "type": "string",
+                "description": "The topic to search the web for"
+            },
+        },
+        "required": ["topic"]
+    }
+}

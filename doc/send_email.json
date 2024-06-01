@@ -1,0 +1,20 @@
+"object"
+{
+  "to": {
+    "type": "string",
+    "description": "The email address of the recipient"
+  },
+  "subject": {
+    "type": "string",
+    "description": "The subject line of the email"
+  },
+  "body": {
+    "type": "string",
+    "description": "The content of the email message"
+  }
+}
+[
+  "to",
+  "subject",
+  "body"
+]

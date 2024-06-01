@@ -1,0 +1,21 @@
+{
+        "name": "get_user",
+        "description": "Looks up a user by email, phone, or username.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "enum": ["email", "phone", "username"],
+                    "description": "The attribute to search for a user by (email, phone, or username)."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value to match for the specified attribute."
+                }
+            },
+            "required": ["key", "value"]
+        }
+    }
+
+

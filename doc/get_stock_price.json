@@ -1,2 +1,9 @@
-{"company":{"type":"string","description":"The company name to fetch stock data for"}}
-["company"]
+{
+  "company": {
+    "type": "string",
+    "description": "The company name to fetch stock data for"
+  }
+}
+[
+  "company"
+]

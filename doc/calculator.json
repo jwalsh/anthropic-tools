@@ -1,2 +1,25 @@
-{"operation":{"type":"string","enum":["add","subtract","multiply","divide"],"description":"The arithmetic operation to perform."},"operand1":{"type":"number","description":"The first operand."},"operand2":{"type":"number","description":"The second operand."}}
-["operation","operand1","operand2"]
+{
+  "operation": {
+    "type": "string",
+    "enum": [
+      "add",
+      "subtract",
+      "multiply",
+      "divide"
+    ],
+    "description": "The arithmetic operation to perform."
+  },
+  "operand1": {
+    "type": "number",
+    "description": "The first operand."
+  },
+  "operand2": {
+    "type": "number",
+    "description": "The second operand."
+  }
+}
+[
+  "operation",
+  "operand1",
+  "operand2"
+]

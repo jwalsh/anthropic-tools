@@ -1,0 +1,11 @@
+ {
+        "name": "get_customer_info",
+        "description": "gets information on a customer based on the customer's username.  Response includes email, username, and previous purchases. Only call this tool once a user has provided you with their username",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "username": {"type": "string", "description": "The username of the user in question. "},
+            },
+            "required": ["username"]
+        }
+    }

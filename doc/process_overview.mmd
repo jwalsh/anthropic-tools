@@ -1,0 +1,7 @@
+graph LR
+    A[App] -- 1. Prompt + set of tools --> M[Model]
+    M -- 2. "I want to use a tool" ToolUseBlock --> A
+    A -- 3a. Execute some<br>tool functionality --> TF[Tool<br>function]
+    TF -- 3b. Get a tool result --> A
+    A -- 3c. Tool Result containing the data<br>we got from the tool --> M
+    M -- 4. Model formulates response using tool data --> A

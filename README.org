@@ -7,7 +7,11 @@ Anthropic's Claude AI model supports tool use, allowing you to equip Claude with
 - https://github.com/anthropics/anthropic-cookbook/tree/main/tool_use
 - https://www.anthropic.com/news/tool-use-ga
 - https://www.wired.com/story/chatbots-are-entering-the-stone-age/
+- https://www.theverge.com/2024/5/30/24167231/anthropic-claude-ai-assistant-automate-tasks
 
+** Access
+
+- 
 ** How Tool Use Works
 
 1. Provide Claude with tools and a user prompt (API request)

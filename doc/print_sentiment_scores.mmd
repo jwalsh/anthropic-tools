@@ -1,0 +1,4 @@
+sequenceDiagram
+   App->>Model: Analyze the sentiment in this tweet: "I hate pickles"<br>You have access to a print_sentiment tool. It expects 3 inputs:<br>- negative_score<br>- positive_score<br>- neutral_score
+   Model->>App: I want to call the print_sentiment tool like this:<br>[ToolUseBlock(name='print_sentiment',<br>input={<br>'negative_score': 0.9,<br>'positive_score': 0,<br>'neutral_score': '0.1'<br>}]
+   App->>App: We don't need to<br>do anything else!<br>Claude gave us a<br>structured<br>response that we<br>can use as is

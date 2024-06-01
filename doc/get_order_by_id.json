@@ -1,0 +1,14 @@
+{
+        "name": "get_order_by_id",
+        "description": "Retrieves the details of a specific order based on the order ID. Returns the order ID, product name, quantity, price, and order status.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "order_id": {
+                    "type": "string",
+                    "description": "The unique identifier for the order."
+                }
+            },
+            "required": ["order_id"]
+        }
+    }
