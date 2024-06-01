@@ -1,22 +1,3 @@
-    {
-        "name": "print_entities",
-        "description": "Prints extract named entities.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "entities": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {"type": "string", "description": "The extracted entity name."},
-                            "type": {"type": "string", "description": "The entity type (e.g., PERSON, ORGANIZATION, LOCATION)."},
-                            "context": {"type": "string", "description": "The context in which the entity appears in the text."}
-                        },
-                        "required": ["name", "type", "context"]
-                    }
-                }
-            },
-            "required": ["entities"]
-        }
-    }
+"object"
+{"entities":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string","description":"The extracted entity name."},"type":{"type":"string","description":"The entity type (e.g., PERSON, ORGANIZATION, LOCATION)."},"context":{"type":"string","description":"The context in which the entity appears in the text."}},"required":["name","type","context"]}}}
+["entities"]

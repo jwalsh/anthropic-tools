@@ -1,23 +1,2 @@
-{
-  "name": "search_product",
-  "description": "Search for a product by name or keyword and return its current price and availability.",
-  "input_schema": {
-    "type": "object",
-    "properties": {
-      "query": {
-        "type": "string",
-        "description": "The product name or search keyword, e.g. 'iPhone 13 Pro' or 'wireless headphones'"
-      },
-      "category": {
-        "type": "string",
-        "enum": ["electronics", "clothing", "home", "toys", "sports"],
-        "description": "The product category to narrow down the search results"
-      },
-      "max_price": {
-        "type": "number",
-        "description": "The maximum price of the product, used to filter the search results"
-      }
-    },
-    "required": ["query"]
-  }
-}
+{"query":{"type":"string","description":"The product name or search keyword, e.g. 'iPhone 13 Pro' or 'wireless headphones'"},"category":{"type":"string","enum":["electronics","clothing","home","toys","sports"],"description":"The product category to narrow down the search results"},"max_price":{"type":"number","description":"The maximum price of the product, used to filter the search results"}}
+["query"]
